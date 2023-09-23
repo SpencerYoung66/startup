@@ -43,4 +43,6 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 #### Websocket Data
 - The number of flavors and votes cast will dynamically be updated on the page
 
+![Rough Draft 1](images/RoughDraft1.jpeg)
 
+![Rough Draft 2](images/RoughDraft2.jpeg)
