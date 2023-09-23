@@ -26,7 +26,7 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 - Style the pages/buttons to make them look nice
 - Have header with links to other parts of page
 - Register/Vote buttons at bottom of page
-- Number of votes/flavors at bottom of page
+- Number of votes at bottom of page
 
 #### JavaScript
 - Login system will login/register people
@@ -41,8 +41,9 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 - Will store users and verify they only have one vote
 
 #### Websocket Data
-- The number of flavors and votes cast will dynamically be updated on the page
+- The number of votes cast will dynamically be updated on the page
 
+### Design Rough Draft
 ![Rough Draft 1](images/RoughDraft1.jpeg)
 
 ![Rough Draft 2](images/RoughDraft2.jpeg)
