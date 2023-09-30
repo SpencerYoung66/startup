@@ -47,3 +47,15 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 ![Rough Draft 1](images/RoughDraft1.jpeg)
 
 ![Rough Draft 2](images/RoughDraft2.jpeg)
+
+
+## HTML Deliverable
+- HTML Pages: Added a home/index page, login page, voting page, register flavor page, and history page
+- Links: There are links from any page to any other page
+- Textual Content: There are various instructions and titles in the different pages (voting instructions, registering instructions, etc.)
+- 3rd Party: A 3rd party quote about history on the history page
+- Images: Image of ice cream on the home page
+- Login Placeholder: Ask for first and last name on login page. I have a place holder there in a form
+- Database Data: The various options to vote for will be the database data, as well as past entries on the history page
+- Websocket: At bottom of vote page there are the total number of votes. At the bottom of register page, total number of flavors. On home page, total number of votes and flavors
+- Various forms for registering flavors, voting, and logging in. All reroute to another page
