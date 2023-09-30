@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="styles.css"/>
         <span>Vote Page</span>
         <menu>
             <ul>
@@ -16,7 +17,54 @@
                 <li>
                     <a href="register.html">Register Flavor</a>
                 </li>
+                <li>
+                    <a href="history.html">History</a>
+                </li>
             </ul>
+            <span>Name</span>
         </menu>
     </head>
+    <body>
+        <h1>Vote for your Favorite Flavors!</h1>
+        <form action="index.html">
+            <div>
+                <div>
+                    <ul>
+                        <h3>Chocolate:</h3>
+                        <li>
+                            <input name="overall" id="doublechocolateoverall" type="radio">
+                            <input name="chocolate" id="doublechocolatechocolate" type="radio">
+                            <span>Double Chocolate</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <h3>Fruit:</h3>
+                        <li>
+                            <input name="overall" id="strawberryoverall" type="radio">
+                            <input name="fruit" id="strawberrychocolate" type="radio">
+                            <span>Strawberry</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <h3>Other:</h3>
+                        <li>
+                            <input name="overall" id="cookiescreamoverall" type="radio">
+                            <input name="other" id="cookiescreamchocolate" type="radio">
+                            <span>Cookies and Cream</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <button type="submit">Vote</button>
+                </div>
+            </div>
+        </form>
+        <div>
+            <span>Number of Votes: #</span>
+        </div>
+    </body>
 </html>

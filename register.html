@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="styles.css"/>
         <span>Register Page</span>
         <menu>
             <ul>
@@ -16,7 +17,34 @@
                 <li>
                     <a href="register.html">Register Flavor</a>
                 </li>
+                <li>
+                    <a href="history.html">History</a>
+                </li>
             </ul>
+            <span>Name</span>
         </menu>
     </head>
+    <body>
+        <h1>Register your Ice Cream Flavor!</h1>
+        <form action="vote.html">
+            <div>
+                <label for="category">Select a Category:</label> 
+                <select name="category" id="category">
+                    <option value="Chocolate">Chocolate</option>
+                    <option value="Fruit">Fruit</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="flavor">Flavor Name:</label>
+                <input name="flavor" id="flavor" type="text">
+            </div>
+            <div>
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        <div>
+            <span>Number of Flavors: #</span>
+        </div>
+    </body>
 </html>

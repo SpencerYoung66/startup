@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="styles.css"/>
-        <span>Login Page</span>
+        <span>History Page</span>
         <menu>
             <ul>
                 <li>
@@ -25,15 +25,24 @@
         </menu>
     </head>
     <body>
-        <h1>Login Here:</h1>
+        <h1>History</h1>
         <div>
-            <form action="index.html">
-                <label for="firstname">First Name:</label>
-                <input name="firstname" id="firstname">
-                <label for="lastname">Last Name:</label>
-                <input name="lastname" id="lastname">
-                <button type="submit">Login/Register</button>
-            </form>
+            <label for="year">Select a Year:</label> 
+            <select name="year" id="year">
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+            </select>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <span>1. Chocolate - Joe Billy</span>
+                </li>
+                <li>
+                    <span>2. Strawberry - Melissa Carleson</span>
+                </li>
+            </ul>
         </div>
     </body>
 </html>
