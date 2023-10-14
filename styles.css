@@ -3,6 +3,11 @@
     font-family: "Helvetica Neue";
 }
 
+a
+{
+    text-decoration: none;
+}
+
 h1
 {
     text-align:center; 
@@ -64,14 +69,17 @@ main
 
 footer
 {
-    flex: 0 30px;
+    flex: 0 45px;
     background: #5A5A5A;
     padding-left:.5rem;
+    display:flex;
+    flex-direction: column;
 }
 
-footer>div>*
+footer>a,footer>span
 {
     color:white;
+    text-align: center;
 }
 
 .input-group
