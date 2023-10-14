@@ -67,5 +67,5 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 - Navigation: As mentioned, Bootstrap navigation bar that links to other pages on site. Made dark-themed as well
 - Responsive to window resizing: Bootstrap navigation and inputs respond to resizing. Everything is contained in either a flex or grid, so resizes properly
 - Application Elements: Centered titles, added appropriate padding and margins, Bootstrap forms/inputs
-- Application Text: Centered text where appropriate, made all text font standard to what Bootstrap uses
+- Application Text: Centered text where appropriate, made all text font standard to what Bootstrap uses, "Helvetica Neue"
 - Application Images: Centered the image on the home page, that's the only image
