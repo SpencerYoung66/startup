@@ -59,3 +59,13 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 - Database Data: The various options to vote for will be the database data, as well as past entries on the history page
 - Websocket: At bottom of vote page there are the total number of votes. At the bottom of register page, total number of flavors. On home page, total number of votes and flavors
 - Various forms for registering flavors, voting, and logging in. All reroute to another page
+
+## CSS Deliverable
+- Header: Made the header/navigation bar Bootstrap, so looks nice
+- Body: Made the body take up room that the header and footer don't use with flex. Also made various forms and inputs Bootstrap to make them look nicer
+- Footer: Made a standard size that acknowledges use of Bootstrap and contains link to GitHub
+- Navigation: As mentioned, Bootstrap navigation bar that links to other pages on site. Made dark-themed as well
+- Responsive to window resizing: Bootstrap navigation and inputs respond to resizing. Everything is contained in either a flex or grid, so resizes properly
+- Application Elements: Centered titles, added appropriate padding and margins, Bootstrap forms/inputs
+- Application Text: Centered text where appropriate, made all text font standard to what Bootstrap uses
+- Application Images: Centered the image on the home page, that's the only image
