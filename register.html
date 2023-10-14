@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+      />
         <link rel="stylesheet" href="styles.css"/>
-        <span>Register Page</span>
-        <menu>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Labor Day Ice Cream</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.html">Login (Name)</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="vote.html">Vote</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="register.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="history.html">History</a>
+                </li>  
+              </ul>
+            </div>
+            </div>
+          </nav>
+        <!-- <div id="menu_div">
             <ul>
                 <li>
                     <a href="index.html">Home</a>
                 </li>
                 <li>
-                    <a href="login.html">Login</a>
+                    <a href="login.html">Login (Name)</a>
                 </li>
                 <li>
                     <a href="vote.html">Vote</a>
@@ -22,30 +55,62 @@
                 </li>
             </ul>
             <span>Name</span>
-        </menu>
+        </div> -->
     </head>
     <body>
-        <h1>Register your Ice Cream Flavor!</h1>
-        <h3>Please input your flavor's name and category, then click register</h3>
-        <form action="vote.html">
+        <main>
             <div>
-                <label for="category">Select a Category:</label> 
-                <select name="category" id="category">
-                    <option value="Chocolate">Chocolate</option>
-                    <option value="Fruit">Fruit</option>
-                    <option value="Other">Other</option>
-                </select>
+                <h1>Register your Flavor!</h1>
+                <span>Please input your flavor's name and category, then click register</span>
             </div>
+            <nav class="navbar bg-light">
+                <form class="container-fluid">
+                <label for="category">Category:</label>
+                <div class="input-group">
+                    <select class="form-select" aria-label="Default select example" id="category">
+                        <option value="1">Chocolate</option>
+                        <option value="2">Fruit</option>
+                        <option value="3">Other</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">Flavor</span>
+                    <input type="text" class="form-control" placeholder="Chocolate Chip" aria-label="Flavor" aria-describedby="basic-addon1">
+                </div>
+                <button class="btn btn-outline-success me-2" type="button">Register</button>
+                </form>
+            </nav>
+            <!-- <form action="vote.html">
+                <div>
+                    <label for="category">Select a Category:</label> 
+                    <select name="category" id="category">
+                        <option value="Chocolate">Chocolate</option>
+                        <option value="Fruit">Fruit</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="flavor">Flavor Name:</label>
+                    <input name="flavor" id="flavor" type="text" placeholder="Flavor">
+                </div>
+                <div>
+                    <button type="submit">Register</button>
+                </div>
+            </form> -->
             <div>
-                <label for="flavor">Flavor Name:</label>
-                <input name="flavor" id="flavor" type="text" placeholder="Flavor">
+                <span>Number of Flavors: #</span>
             </div>
+        </main>
+        <footer>
             <div>
-                <button type="submit">Register</button>
+                <a href="https://github.com/SpencerYoung66/startup">GitHub</a>
             </div>
-        </form>
-        <div>
-            <span>Number of Flavors: #</span>
-        </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+crossorigin="anonymous"
+></script>
     </body>
 </html>

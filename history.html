@@ -1,9 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+      />
         <link rel="stylesheet" href="styles.css"/>
-        <span>History Page</span>
-        <menu>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Labor Day Ice Cream</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.html">Login (Name)</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="vote.html">Vote</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="history.html">History</a>
+                </li>  
+              </ul>
+            </div>
+            </div>
+          </nav>
+        <!-- <div id="menu_div">
             <ul>
                 <li>
                     <a href="index.html">Home</a>
@@ -22,28 +55,41 @@
                 </li>
             </ul>
             <span>Name</span>
-        </menu>
+        </div> -->
     </head>
     <body>
-        <h1>History</h1>
-        <h3>3rd Party quote about history</h3>
-        <div>
-            <label for="year">Select a Year:</label> 
-            <select name="year" id="year">
-                <option value="2023">2023</option>
-                <option value="2022">2022</option>
-                <option value="2021">2021</option>
-            </select>
-        </div>
-        <div>
-            <ul>
-                <li>
-                    <span>1. Chocolate - Joe Billy</span>
-                </li>
-                <li>
-                    <span>2. Strawberry - Melissa Carleson</span>
-                </li>
-            </ul>
-        </div>
+        <main>
+            <h1>History</h1>
+            <h3>3rd Party quote about history</h3>
+            <div>
+                <label for="year">Select a Year:</label> 
+                <select name="year" id="year">
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                </select>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <span>1. Chocolate - Joe Billy</span>
+                    </li>
+                    <li>
+                        <span>2. Strawberry - Melissa Carleson</span>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <div>
+                <a href="https://github.com/SpencerYoung66/startup">GitHub</a>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+crossorigin="anonymous"
+></script>
     </body>
 </html>

@@ -1,9 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+      />
         <link rel="stylesheet" href="styles.css"/>
-        <span>Vote Page</span>
-        <menu>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Labor Day Ice Cream</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.html">Login (Name)</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="vote.html">Vote</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="history.html">History</a>
+                </li>  
+              </ul>
+            </div>
+            </div>
+          </nav>
+        <!-- <div id="menu_div">
             <ul>
                 <li>
                     <a href="index.html">Home</a>
@@ -22,67 +55,114 @@
                 </li>
             </ul>
             <span>Name</span>
-        </menu>
+        </div> -->
     </head>
     <body>
-        <h1>Vote for your Favorite Flavors!</h1>
-        <p>In the first column, mark your overall favorite Ice Cream from across all categories.</p>
-        <p>In the second column, mark your category specific favorite.</p>
-        <p>Your overall favorite should be the same as one of your category favorites.</p>
-        <form action="index.html">
+        <main>
+            <h1>Vote for your Favorite Flavors!</h1>
+            <span>Vote for your favorite flavor in each category. The Grand Prize must be one of the flavors you voted for in your category favorites.</span>
+            <nav class="navbar bg-light">
+                <form class="container-fluid">
+                    <label for="chocolate">Chocolate:</label>
+                    <div class="input-group">
+                        <select class="form-select" aria-label="Default select example" id="chocolate">
+                            <option value="1">Chocolate</option>
+                            <option value="2">Double Chocolate</option>
+                            <option value="3">Chocolate Brownie</option>
+                        </select>
+                    </div>
+                    <label for="fruit">Fruit:</label>
+                    <div class="input-group">
+                        <select class="form-select" aria-label="Default select example" id="fruit">
+                            <option value="1">Strawberry</option>
+                            <option value="2">Cherry</option>
+                            <option value="3">Orange</option>
+                        </select>
+                    </div>
+                    <label for="other">Other:</label>
+                    <div class="input-group">
+                        <select class="form-select" aria-label="Default select example" id="other">
+                            <option value="1">Cherry Chocolate Chip</option>
+                            <option value="2">Brithday Cake</option>
+                        </select>
+                    </div>
+                    <label for="grand">Grand Prize:</label>
+                    <div class="input-group">
+                        <select name="grand" id="grand" class="form-select" aria-label="Default select example">
+                            <option value="1">Chocolate</option>
+                            <option value="2">Cherry</option>
+                            <option value="3">Cherry Chocolate Chip</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-outline-success me-2" type="button">Vote</button>
+                </form>
+            </nav>
+            <!-- <form action="index.html">
+                <div>
+                    <div>
+                        <h3>Chocolate:</h3>
+                        <ul>
+                            <li>
+                                <input name="overall" id="doublechocolateoverall" type="radio">
+                                <input name="chocolate" id="doublechocolatechocolate" type="radio">
+                                <span>Double Chocolate</span>
+                            </li>
+                            <li>
+                                <input name="overall" id="chocolatebrownieoverall" type="radio">
+                                <input name="chocolate" id="chocolatebrowniechocolate" type="radio">
+                                <span>Chocolate Brownie</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Fruit:</h3>
+                        <ul>
+                            <li>
+                                <input name="overall" id="strawberryoverall" type="radio">
+                                <input name="fruit" id="strawberrychocolate" type="radio">
+                                <span>Strawberry</span>
+                            </li>
+                            <li>
+                                <input name="overall" id="cherryoverall" type="radio">
+                                <input name="fruit" id="cherrychocolate" type="radio">
+                                <span>Cherry</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Other:</h3>
+                        <ul>
+                            <li>
+                                <input name="overall" id="cookiescreamoverall" type="radio">
+                                <input name="other" id="cookiescreamchocolate" type="radio">
+                                <span>Cookies and Cream</span>
+                            </li>
+                            <li>
+                                <input name="overall" id="birthdaycakeoverall" type="radio">
+                                <input name="other" id="birthdaycakeoother" type="radio">
+                                <span>Birthday Cake</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button type="submit">Vote</button>
+                    </div>
+                </div>
+            </form> -->
             <div>
-                <div>
-                    <h3>Chocolate:</h3>
-                    <ul>
-                        <li>
-                            <input name="overall" id="doublechocolateoverall" type="radio">
-                            <input name="chocolate" id="doublechocolatechocolate" type="radio">
-                            <span>Double Chocolate</span>
-                        </li>
-                        <li>
-                            <input name="overall" id="chocolatebrownieoverall" type="radio">
-                            <input name="chocolate" id="chocolatebrowniechocolate" type="radio">
-                            <span>Chocolate Brownie</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Fruit:</h3>
-                    <ul>
-                        <li>
-                            <input name="overall" id="strawberryoverall" type="radio">
-                            <input name="fruit" id="strawberrychocolate" type="radio">
-                            <span>Strawberry</span>
-                        </li>
-                        <li>
-                            <input name="overall" id="cherryoverall" type="radio">
-                            <input name="fruit" id="cherrychocolate" type="radio">
-                            <span>Cherry</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Other:</h3>
-                    <ul>
-                        <li>
-                            <input name="overall" id="cookiescreamoverall" type="radio">
-                            <input name="other" id="cookiescreamchocolate" type="radio">
-                            <span>Cookies and Cream</span>
-                        </li>
-                        <li>
-                            <input name="overall" id="birthdaycakeoverall" type="radio">
-                            <input name="other" id="birthdaycakeoother" type="radio">
-                            <span>Birthday Cake</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <button type="submit">Vote</button>
-                </div>
+                <span>Number of Votes: #</span>
             </div>
-        </form>
-        <div>
-            <span>Number of Votes: #</span>
-        </div>
+        </main>
+        <footer>
+            <div>
+                <a href="https://github.com/SpencerYoung66/startup">GitHub</a>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+crossorigin="anonymous"
+></script>
     </body>
 </html>
