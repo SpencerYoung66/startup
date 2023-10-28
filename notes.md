@@ -8,3 +8,11 @@ Link to [README.md](https://github.com/SpencerYoung66/startup/blob/main/README.m
 
 ### HTTPS Notes:
 - Let's Encyrpt will dynamically check to make sure that the owner of the site is who they say they are, then they will issue a dynamically allocated/generated certificate
+
+# Midterm Notes:
+1. 
+2. 
+3. 
+30. bozo.click is root
+
+33. 443 - HTTPS, 80 - HTTP, 22 - SSH
