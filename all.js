@@ -1,5 +1,8 @@
 const categories = ["chocolate", "fruit", "other"];
 
+localStorage.setItem("numFlavors", Number(0));
+localStorage.setItem("numVotes", Number(0));
+
 let year_2023 = [
     { name: "Double Chocolate", category: "chocolate", owner: "Nathan Young" },
     { name: "Strawberry", category: "fruit", owner: "Grandpa" },
@@ -84,6 +87,12 @@ function vote(){
     localStorage.setItem("fruit", fruit.value);
     localStorage.setItem("other", other.value);
     localStorage.setItem("grandPrize", grandPrize.value);
+
+    //WebSocket
+    let numVotes = document.querySelector('#numVotes');
+    localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
+    numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
+
     window.location.href = "index.html";
 }
 
@@ -112,6 +121,12 @@ function addUserFlavor(){
 
     localStorage.setItem("userFlavors", JSON.stringify(currentFlavorsArray));
     flavors.push({name:newFlavor, category:newCategory, owner:localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")});
+
+
+    //WebSocket
+    let numFlavors = document.querySelector('#numFlavors');
+    localStorage.setItem("numFlavors", Number(localStorage.getItem("numFlavors")) + 1);
+    numFlavors.innerHTML = "Number of Flavors: " + Number(localStorage.getItem("numFlavors"));
 }
 
 function fillYearData(){
@@ -144,4 +159,18 @@ function eraseList(element){
     }
 }
 
+setInterval(() => {
+    if(document.querySelector('#numFlavors')){
+        let numFlavors = document.querySelector('#numFlavors');
+        localStorage.setItem("numFlavors", Number(localStorage.getItem("numFlavors")) + 1);
+        numFlavors.innerHTML = "Number of Flavors: " + Number(localStorage.getItem("numFlavors"));
+    }
+  }, 4000);
 
+  setInterval(() => {
+    if(document.querySelector('#numVotes')){
+        let numVotes = document.querySelector('#numVotes');
+        localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
+        numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
+    }
+  }, 1000);
