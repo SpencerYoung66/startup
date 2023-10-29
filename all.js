@@ -1,5 +1,26 @@
 const categories = ["chocolate", "fruit", "other"];
 
+let year_2023 = [
+    { name: "Double Chocolate", category: "chocolate", owner: "Nathan Young" },
+    { name: "Strawberry", category: "fruit", owner: "Grandpa" },
+    { name: "Cherry Chocolate Chip", category: "other", owner: "Brad Young" },
+    { name: "Cookie Dough", category: "other", owner: "Brad Young" },
+]
+
+let year_2022 = [
+    { name: "Triple Chocolate", category: "chocolate", owner: "Nathan Young" },
+    { name: "Cherry", category: "fruit", owner: "Grandpa" },
+    { name: "Cookie Two-Step", category: "other", owner: "Brad Young" },
+    { name: "Cookie Dough", category: "other", owner: "Brad Young" },
+]
+
+let year_2021 = [
+    { name: "Chocolate", category: "chocolate", owner: "Nathan Young" },
+    { name: "Orange", category: "fruit", owner: "Grandpa" },
+    { name: "I'm done coming up with flavors", category: "other", owner: "Brad Young" },
+    { name: "Cookie Dough", category: "other", owner: "Brad Young" },
+]
+
 let flavors = [
     { name: "Double Chocolate", category: "chocolate", owner: "Nathan Young" },
     { name: "Strawberry", category: "fruit", owner: "Grandpa" },
@@ -90,6 +111,31 @@ function addUserFlavor(){
     currentFlavorsArray.push({name:newFlavor, category:newCategory});
 
     localStorage.setItem("userFlavors", JSON.stringify(currentFlavorsArray));
+    flavors.push({name:newFlavor, category:newCategory, owner:localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")});
+}
+
+function fillYearData(){
+    let currentYear = document.querySelector("#year");
+    let currentYearList = [];
+    flavorList = document.querySelector("#flavors");
+    eraseList(flavorList);
+    if(currentYear.value == "2023"){
+        currentYearList = year_2023;
+    }
+    else if(currentYear.value == "2022"){
+        currentYearList = year_2022;
+    }
+    else{
+        currentYearList = year_2021;
+    }   
+
+    for(flavor of currentYearList){
+        let currentListFlavor = document.createElement("li");
+        currentListFlavor.setAttribute("class", "list-group-item");
+        currentListFlavor.innerHTML = flavor.name + " - " + flavor.category;
+        flavorList.appendChild(currentListFlavor);
+    }
+
 }
 
 function eraseList(element){
@@ -97,4 +143,5 @@ function eraseList(element){
         element.removeChild(element.firstChild);
     }
 }
+
 

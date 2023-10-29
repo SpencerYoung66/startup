@@ -58,7 +58,7 @@
             <span>Name</span>
         </div> -->
     </head>
-    <body onload="fillName()">
+    <body onload="fillYearData();fillName()">
         <main>
             <h1>History</h1>
             <div style="text-align:center;">
@@ -67,7 +67,7 @@
             <nav class="navbar bg-light">
                 <label for="year">Year:</label>
                 <div class="input-group">
-                    <select class="form-select" aria-label="Default select example" id="year">
+                    <select class="form-select" aria-label="Default select example" id="year" onchange="fillYearData()">
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>
@@ -75,9 +75,7 @@
                 </div>
             </nav>
             <div>
-                <ul class="list-group">
-                    <li class="list-group-item">Chocolate - Sarah</li>
-                    <li class="list-group-item">Cherry - Bill</li>
+                <ul id="flavors" class="list-group">
                   </ul>
             </div>
         </main>
