@@ -78,10 +78,11 @@
                     <span class="input-group-text" id="basic-addon1">Flavor</span>
                     <input id="flavorName" type="text" class="form-control" placeholder="Chocolate Chip" aria-label="Flavor" aria-describedby="basic-addon1">
                 </div>
-                <button class="btn btn-outline-success me-2" type="button" onclick="addUserFlavor()">Register</button>
+                <button class="btn btn-outline-success me-2" type="button" onclick="addUserFlavor();fillUserFlavors()">Register</button>
                 </form>
             </nav>
             <div>
+                <span>Your Flavors:</span>
                 <ul class="list-group" id="flavors" onload="fillUserFlavors()">
                     <li class="list-group-item">Chocolate - Sarah</li>
                     <li class="list-group-item">Cherry - Bill</li>

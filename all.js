@@ -73,7 +73,9 @@ function fillUserFlavors(){
         let currentFlavorsArray = JSON.parse(localStorage.getItem("userFlavors"));
         for(flavor of currentFlavorsArray){
             let currentListFlavor = document.createElement("li");
-            currentListFlavor.setAttribute("class", )
+            currentListFlavor.setAttribute("class", "list-group-item");
+            currentListFlavor.innerHTML = flavor.name + " - " + flavor.category;
+            flavorList.appendChild(currentListFlavor);
         }
     }
 }
