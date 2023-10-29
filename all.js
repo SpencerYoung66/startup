@@ -79,21 +79,27 @@ function selectGrandPrize(){
 }
 
 function vote(){
-    let chocolate = document.querySelector("#chocolate");
-    let fruit = document.querySelector("#fruit");
-    let other = document.querySelector("#other");
-    let grandPrize = document.querySelector("#grand");
-    localStorage.setItem("chocolate", chocolate.value);
-    localStorage.setItem("fruit", fruit.value);
-    localStorage.setItem("other", other.value);
-    localStorage.setItem("grandPrize", grandPrize.value);
+    if(localStorage.getItem("firstname")){
+        let chocolate = document.querySelector("#chocolate");
+        let fruit = document.querySelector("#fruit");
+        let other = document.querySelector("#other");
+        let grandPrize = document.querySelector("#grand");
+        localStorage.setItem("chocolate", chocolate.value);
+        localStorage.setItem("fruit", fruit.value);
+        localStorage.setItem("other", other.value);
+        localStorage.setItem("grandPrize", grandPrize.value);
 
-    //WebSocket
-    let numVotes = document.querySelector('#numVotes');
-    localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
-    numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
+        //WebSocket
+        let numVotes = document.querySelector('#numVotes');
+        localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
+        numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
 
-    window.location.href = "index.html";
+        window.location.href = "index.html";
+    }
+    else{
+        alert("Please Log in");
+        window.location.href = "login.html";
+    }
 }
 
 function fillUserFlavors(){
@@ -111,22 +117,28 @@ function fillUserFlavors(){
 }
 
 function addUserFlavor(){
-    let newFlavor = document.querySelector("#flavorName").value;
-    let newCategory = document.querySelector("#category").value;
-    let currentFlavorsArray = [];
-    if(localStorage.getItem("userFlavors")){
-        currentFlavorsArray = JSON.parse(localStorage.getItem("userFlavors"));
+    if(localStorage.getItem("firstname")){
+        let newFlavor = document.querySelector("#flavorName").value;
+        let newCategory = document.querySelector("#category").value;
+        let currentFlavorsArray = [];
+        if(localStorage.getItem("userFlavors")){
+            currentFlavorsArray = JSON.parse(localStorage.getItem("userFlavors"));
+        }
+        currentFlavorsArray.push({name:newFlavor, category:newCategory});
+
+        localStorage.setItem("userFlavors", JSON.stringify(currentFlavorsArray));
+        flavors.push({name:newFlavor, category:newCategory, owner:localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")});
+
+
+        //WebSocket
+        let numFlavors = document.querySelector('#numFlavors');
+        localStorage.setItem("numFlavors", Number(localStorage.getItem("numFlavors")) + 1);
+        numFlavors.innerHTML = "Number of Flavors: " + Number(localStorage.getItem("numFlavors"));
     }
-    currentFlavorsArray.push({name:newFlavor, category:newCategory});
-
-    localStorage.setItem("userFlavors", JSON.stringify(currentFlavorsArray));
-    flavors.push({name:newFlavor, category:newCategory, owner:localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")});
-
-
-    //WebSocket
-    let numFlavors = document.querySelector('#numFlavors');
-    localStorage.setItem("numFlavors", Number(localStorage.getItem("numFlavors")) + 1);
-    numFlavors.innerHTML = "Number of Flavors: " + Number(localStorage.getItem("numFlavors"));
+    else{
+        alert("Please Log in");
+        window.location.href = "login.html";
+    }
 }
 
 function fillYearData(){
