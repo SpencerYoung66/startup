@@ -69,3 +69,9 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 - Application Elements: Centered titles, added appropriate padding and margins, Bootstrap forms/inputs
 - Application Text: Centered text where appropriate, made all text font standard to what Bootstrap uses, "Helvetica Neue"
 - Application Images: Centered the image on the home page, that's the only image
+
+## JavaScript Deliverable
+- Login: I have a login page that on button click stores your name, redirects you to the home page, and displays your first name by the Login tab at the top.
+- Database: I am storing the user, user flavors, amount of flavors and votes (this resets itself on each page, but I will be doing it differently when actually referring to database data), and the vote of the user in local storage. This will eventually be done in the database.
+- WebSocket: I have a setInterval that triggers every few seconds to update the flavors and votes where applicable (resets on each page, but will change when actually getting database data and other user data).
+- Application Logic: Login will redirect to homepage, when adding a flavor the flavor gets added to list on page to see what you have registered, voting page will store votes in local storage and redirect to the homepage. Grand prize section of voting can only be one of the flavors you voted for from the other categories, so webpage reflects this. Flavors populated from prescribed list in the JavaScript, but will be from the database. History clears the table and inserts the table for the correct year.
