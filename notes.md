@@ -13,6 +13,7 @@ Link to [README.md](https://github.com/SpencerYoung66/startup/blob/main/README.m
 1. 
 2. 
 3. 
-30. bozo.click is root
-
+15. ![CSS Box Model](images/CSSBoxModel.png)
+30. bozo.click is root, click is top level, banana.fruit is subdomain
+32. DNS points to IP address for given domain name (cloudflare.com)
 33. 443 - HTTPS, 80 - HTTP, 22 - SSH
