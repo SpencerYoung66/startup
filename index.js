@@ -20,6 +20,7 @@ apiRouter.get('/flavors/:User', (_req, res) => {
 });
 
 apiRouter.post('/flavor', (_req, res) => {
+    addFlavor();
     res.send(userFlavors);
 })
 
@@ -38,4 +39,4 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-let userFlavors = localStorage.getItem('userFlavors');
+let userFlavors = [{"flavor": "Chocolate", "owner": "Brad Young"}];
