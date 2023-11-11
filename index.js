@@ -20,23 +20,27 @@ apiRouter.get('/flavors/', (req, res) => {
   });
 
 // GetScores
-apiRouter.get('/flavors/:User', (req, res) => {
-  res.send(userFlavors.filter(flavor => flavor.owner == decodeURI(req.params.User)));
+apiRouter.get('/flavors/:Year/:User', (req, res) => {
+  res.send(userFlavors.filter(flavor => (flavor.owner == decodeURI(req.params.User) && flavor.owner == req.params.Year)));
 });
 
-apiRouter.get('/history/:Year', (req, res) => {
+apiRouter.get('/flavors/:Year', (req, res) => {
     res.send(userFlavors.filter(flavor => flavor.year == req.params.Year));
   });
 
-apiRouter.post('/flavor', (req, res) => {
+apiRouter.post('/flavors', (req, res) => {
     addFlavor(req.body);
     res.send(userFlavors.filter(flavor => flavor.owner == req.body.owner));
 })
 
+// apiRouter.get('/votes/', (req, res) => {
+//     res.send(votes);
+//   });
+
 // SubmitScore
 apiRouter.post('/vote', (req, res) => {
-  scores = updateScores(req.body, scores);
-  res.send(scores);
+  addVote(req.body);
+  res.send(votes.filter(myVote => myVote.user == req.body.user));
 });
 
 // Return the application's default page if the path is unknown
@@ -48,10 +52,17 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-let userFlavors = [{"flavor": "Chocolate", "category": "Chocolate", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"}, 
-                   {"flavor": "Birthday Cake", "category": "Other", "owner": "Nathan Young", "year": 2022, "winner": "Other"},
-                   {"flavor": "Strawberry", "category": "Fruit", "owner": "Grandpa", "year":2021, "winner": "Fruit"}];
+let userFlavors = [{"flavor": "Chocolate", "category": "chocolate", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"}, 
+                   {"flavor": "Birthday Cake", "category": "other", "owner": "Nathan Young", "year": 2022, "winner": "Other"},
+                   {"flavor": "Strawberry", "category": "fruit", "owner": "Grandpa", "year":2021, "winner": "Fruit"}];
+let votes = [];
+
 
 function addFlavor(newFlavor){
     userFlavors.push(newFlavor);
+}
+
+function addVote(newVote){
+    votes = votes.filter(myVote => myVote.user != newVote.user);
+    votes.push(newVote);
 }

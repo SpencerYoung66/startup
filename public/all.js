@@ -47,12 +47,14 @@ async function fillAllFlavors(){
 async function fillFlavors(category){
     let selectCategory = document.querySelector("#"+category);
     eraseList(selectCategory);
-    for(flavor of flavors){
+    flavorsResponse = await fetch("/api/flavors/2023");
+    allFlavors = await flavorsResponse.json();
+    for(flavor of allFlavors){
         if(flavor.category === category){
             let currentCategory = document.createElement("option");
-            console.log(flavor.name);
-            currentCategory.setAttribute("value", flavor.name);
-            currentCategory.innerHTML = flavor.name;
+            console.log(flavor.flavor);
+            currentCategory.setAttribute("value", flavor.flavor);
+            currentCategory.innerHTML = flavor.flavor;
             selectCategory.appendChild(currentCategory);
         }
     }
@@ -78,23 +80,35 @@ function selectGrandPrize(){
     localStorage.setItem("grandPrize", grandPrize.value);
 }
 
-function vote(){
+async function vote(){
     if(localStorage.getItem("firstname")){
         let chocolate = document.querySelector("#chocolate");
         let fruit = document.querySelector("#fruit");
         let other = document.querySelector("#other");
         let grandPrize = document.querySelector("#grand");
-        localStorage.setItem("chocolate", chocolate.value);
-        localStorage.setItem("fruit", fruit.value);
-        localStorage.setItem("other", other.value);
-        localStorage.setItem("grandPrize", grandPrize.value);
+        voteRequest = {"user": localStorage.getItem("firstname") + " " + localStorage.getItem("lastname"), "chocolate": chocolate.value, "fruit": fruit.value, "other": other.value, "grandPrize":grandPrize.value};
+        const response = await fetch('/api/vote', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(voteRequest),
+        });
+
+        let vote = await response.json();
+
+        console.log(JSON.stringify(vote));
+        localStorage.setItem("userVote", JSON.stringify(vote));
+
+        // localStorage.setItem("chocolate", chocolate.value);
+        // localStorage.setItem("fruit", fruit.value);
+        // localStorage.setItem("other", other.value);
+        // localStorage.setItem("grandPrize", grandPrize.value);
 
         //WebSocket
         let numVotes = document.querySelector('#numVotes');
         localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
         numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
 
-        window.location.href = "index.html";
+        // window.location.href = "index.html";
     }
     else{
         alert("Please Log in");
@@ -110,7 +124,7 @@ function fillUserFlavors(){
         for(flavor of currentFlavorsArray){
             let currentListFlavor = document.createElement("li");
             currentListFlavor.setAttribute("class", "list-group-item");
-            currentListFlavor.innerHTML = flavor.flavor + " - " + flavor.category;
+            currentListFlavor.innerHTML = flavor.flavor; //+ " - " + flavor.category;
             flavorList.appendChild(currentListFlavor);
         }
     }
@@ -131,7 +145,7 @@ async function addUserFlavor(){
         // localStorage.setItem("userFlavors", JSON.stringify(currentFlavorsArray));
         // flavors.push({name:newFlavor, category:newCategory, owner:localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")});
 
-        const response = await fetch('/api/flavor', {
+        const response = await fetch('/api/flavors', {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(flavorRequest),
@@ -162,13 +176,13 @@ async function fillYearData(){
     flavorList = document.querySelector("#flavors");
     eraseList(flavorList);
     if(currentYear.value == "2023"){
-        historyResponse = await fetch("/api/history/2023");
+        historyResponse = await fetch("/api/flavors/2023");
     }
     else if(currentYear.value == "2022"){
-        historyResponse = await fetch("/api/history/2022");
+        historyResponse = await fetch("/api/flavors/2022");
     }
     else{
-        historyResponse = await fetch("/api/history/2021");
+        historyResponse = await fetch("/api/flavors/2021");
     }   
     currentYearList = await historyResponse.json();
     for(flavor of currentYearList){
