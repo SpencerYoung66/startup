@@ -15,13 +15,22 @@ const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // GetScores
-apiRouter.get('/flavors/:User', (_req, res) => {
-  res.send(userFlavors);
+apiRouter.get('/flavors/', (req, res) => {
+    res.send(userFlavors);
+  });
+
+// GetScores
+apiRouter.get('/flavors/:User', (req, res) => {
+  res.send(userFlavors.filter(flavor => flavor.owner == decodeURI(req.params.User)));
 });
 
-apiRouter.post('/flavor', (_req, res) => {
-    addFlavor();
-    res.send(userFlavors);
+apiRouter.get('/history/:Year', (req, res) => {
+    res.send(userFlavors.filter(flavor => flavor.year == req.params.Year));
+  });
+
+apiRouter.post('/flavor', (req, res) => {
+    addFlavor(req.body);
+    res.send(userFlavors.filter(flavor => flavor.owner == req.body.owner));
 })
 
 // SubmitScore
@@ -31,7 +40,7 @@ apiRouter.post('/vote', (req, res) => {
 });
 
 // Return the application's default page if the path is unknown
-app.use((_req, res) => {
+app.use((req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
@@ -39,4 +48,10 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-let userFlavors = [{"flavor": "Chocolate", "owner": "Brad Young"}];
+let userFlavors = [{"flavor": "Chocolate", "category": "Chocolate", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"}, 
+                   {"flavor": "Birthday Cake", "category": "Other", "owner": "Nathan Young", "year": 2022, "winner": "Other"},
+                   {"flavor": "Strawberry", "category": "Fruit", "owner": "Grandpa", "year":2021, "winner": "Fruit"}];
+
+function addFlavor(newFlavor){
+    userFlavors.push(newFlavor);
+}

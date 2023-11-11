@@ -110,24 +110,39 @@ function fillUserFlavors(){
         for(flavor of currentFlavorsArray){
             let currentListFlavor = document.createElement("li");
             currentListFlavor.setAttribute("class", "list-group-item");
-            currentListFlavor.innerHTML = flavor.name + " - " + flavor.category;
+            currentListFlavor.innerHTML = flavor.flavor + " - " + flavor.category;
             flavorList.appendChild(currentListFlavor);
         }
     }
 }
 
-function addUserFlavor(){
+async function addUserFlavor(){
     if(localStorage.getItem("firstname")){
         let newFlavor = document.querySelector("#flavorName").value;
         let newCategory = document.querySelector("#category").value;
-        let currentFlavorsArray = [];
-        if(localStorage.getItem("userFlavors")){
-            currentFlavorsArray = JSON.parse(localStorage.getItem("userFlavors"));
-        }
-        currentFlavorsArray.push({name:newFlavor, category:newCategory});
+        flavorRequest = {"flavor": newFlavor, "category": newCategory, "owner": localStorage.getItem("firstname") + " " + localStorage.getItem("lastname"), "year": new Date().getFullYear()}
+        console.log(JSON.stringify(flavorRequest))
+        // let currentFlavorsArray = [];
+        // if(localStorage.getItem("userFlavors")){
+        //     currentFlavorsArray = JSON.parse(localStorage.getItem("userFlavors"));
+        // }
+        // currentFlavorsArray.push({name:newFlavor, category:newCategory});
 
-        localStorage.setItem("userFlavors", JSON.stringify(currentFlavorsArray));
-        flavors.push({name:newFlavor, category:newCategory, owner:localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")});
+        // localStorage.setItem("userFlavors", JSON.stringify(currentFlavorsArray));
+        // flavors.push({name:newFlavor, category:newCategory, owner:localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")});
+
+        const response = await fetch('/api/flavor', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(flavorRequest),
+        });
+
+        let flavorsUpdated = await response.json();
+
+        console.log(JSON.stringify(flavorsUpdated));
+        localStorage.setItem("userFlavors", JSON.stringify(flavorsUpdated));
+
+        fillUserFlavors();
 
 
         //WebSocket

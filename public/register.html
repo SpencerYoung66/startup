@@ -65,7 +65,7 @@
                 <span>Please input your flavor's name and category, then click register</span>
             </div>
             <nav class="navbar bg-light">
-                <form class="container-fluid">
+                <form class="container-fluid" method="POST">
                 <label for="category">Category:</label>
                 <div class="input-group">
                     <select class="form-select" aria-label="Default select example" id="category" onload="fillCategories()">
@@ -78,14 +78,12 @@
                     <span class="input-group-text" id="basic-addon1">Flavor</span>
                     <input id="flavorName" type="text" class="form-control" placeholder="Chocolate Chip" aria-label="Flavor" aria-describedby="basic-addon1">
                 </div>
-                <button class="btn btn-outline-success me-2" type="button" onclick="addUserFlavor();fillUserFlavors()">Register</button>
+                <button class="btn btn-outline-success me-2" type="button" onclick="addUserFlavor()">Register</button>
                 </form>
             </nav>
             <div>
                 <span>Your Flavors:</span>
-                <ul class="list-group" id="flavors" onload="fillUserFlavors()">
-                    <li class="list-group-item">Chocolate - Sarah</li>
-                    <li class="list-group-item">Cherry - Bill</li>
+                <ul class="list-group" id="flavors">
                   </ul>
             </div>
             <!-- <form action="vote.html">
