@@ -156,25 +156,25 @@ async function addUserFlavor(){
     }
 }
 
-function fillYearData(){
+async function fillYearData(){
     let currentYear = document.querySelector("#year");
     let currentYearList = [];
     flavorList = document.querySelector("#flavors");
     eraseList(flavorList);
     if(currentYear.value == "2023"){
-        currentYearList = year_2023;
+        historyResponse = await fetch("/api/history/2023");
     }
     else if(currentYear.value == "2022"){
-        currentYearList = year_2022;
+        historyResponse = await fetch("/api/history/2022");
     }
     else{
-        currentYearList = year_2021;
+        historyResponse = await fetch("/api/history/2021");
     }   
-
+    currentYearList = await historyResponse.json();
     for(flavor of currentYearList){
         let currentListFlavor = document.createElement("li");
         currentListFlavor.setAttribute("class", "list-group-item");
-        currentListFlavor.innerHTML = flavor.name + " - " + flavor.category;
+        currentListFlavor.innerHTML = flavor.flavor + " - " + flavor.category;
         flavorList.appendChild(currentListFlavor);
     }
 
