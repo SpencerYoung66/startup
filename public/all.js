@@ -37,6 +37,27 @@ function fillName(){
     }
 }
 
+async function login(){
+    let firstname = document.querySelector("#firstname");
+    let lastname = document.querySelector("#lastname");
+    if(firstname.value.length > 0 && lastname.value.length > 0){
+        let request = {"firstname": firstname.value, "lastname": lastname.value};
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(request),
+        });
+        let loggedin = await response.json();
+        console.log(loggedin);
+        localStorage.setItem("firstname", firstname.value);
+        localStorage.setItem("lastname", lastname.value)
+        // window.location.href = "index.html";
+    }
+    else{
+        alert("Please enter a first and last name");
+    }
+}
+
 async function fillAllFlavors(){
     await fillFlavors("chocolate");
     await fillFlavors("fruit");
@@ -108,7 +129,7 @@ async function vote(){
         localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
         numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
 
-        // window.location.href = "index.html";
+        window.location.href = "index.html";
     }
     else{
         alert("Please Log in");
@@ -214,7 +235,6 @@ async function getRandomQuote(){
     quote.innerHTML = quoteData.content;
     let author = document.querySelector("#author");
     author.innerHTML = quoteData.author;
-    console.log(quoteData.content);
 
 }
 

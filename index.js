@@ -37,11 +37,20 @@ apiRouter.post('/flavors', (req, res) => {
 //     res.send(votes);
 //   });
 
+apiRouter.get('/users/', (req, res) => {
+    res.send(users);
+  });
+
 // SubmitScore
 apiRouter.post('/vote', (req, res) => {
   addVote(req.body);
   res.send(votes.filter(myVote => myVote.user == req.body.user));
 });
+
+apiRouter.post('/login', (req, res) => {
+    ldLogin(req.body);
+    res.send(userFlavors.filter(flavor => flavor.owner == req.body.owner));
+})
 
 // Return the application's default page if the path is unknown
 app.use((req, res) => {
@@ -57,6 +66,8 @@ let userFlavors = [{"flavor": "Chocolate", "category": "chocolate", "owner": "Br
                    {"flavor": "Strawberry", "category": "fruit", "owner": "Grandpa", "year":2021, "winner": "Fruit"}];
 let votes = [];
 
+let users = [];
+
 
 function addFlavor(newFlavor){
     userFlavors.push(newFlavor);
@@ -65,4 +76,10 @@ function addFlavor(newFlavor){
 function addVote(newVote){
     votes = votes.filter(myVote => myVote.user != newVote.user);
     votes.push(newVote);
+}
+
+function ldLogin(newUser){
+    if((users.filter(user => (user.firstname == newUser.firstname && user.lastname == newUser.lastname)).length == 0)){
+        users.push(newUser);
+    }
 }
