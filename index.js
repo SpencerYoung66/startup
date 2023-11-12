@@ -37,9 +37,9 @@ apiRouter.post('/flavors', (req, res) => {
 //     res.send(votes);
 //   });
 
-apiRouter.get('/users/', (req, res) => {
-    res.send(users);
-  });
+// apiRouter.get('/users/', (req, res) => {
+//     res.send(users);
+//   });
 
 // SubmitScore
 apiRouter.post('/vote', (req, res) => {
