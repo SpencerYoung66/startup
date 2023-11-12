@@ -17,7 +17,7 @@ app.use(`/api`, apiRouter);
 // GetScores
 apiRouter.get('/flavors/', (req, res) => {
     res.send(userFlavors);
-  });
+});
 
 // GetScores
 apiRouter.get('/flavors/:Year/:User', (req, res) => {

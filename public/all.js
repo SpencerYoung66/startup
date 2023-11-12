@@ -194,6 +194,30 @@ async function fillYearData(){
 
 }
 
+async function getRandomQuote(){
+    // let appId = Math.round(Math.random() * (2550000 - 1000000) + 1000000);
+    // let url = "https://store.steampowered.com/api/appdetails?appids=" + appId;
+    // let response = await fetch(url);
+    // let app = await response.json();
+    // while(app.appId.success == false || app.appId.data.required_age == "18"){
+    //     appId = Math.round(Math.random() * (2550000 - 1000000));
+    //     url = "https://store.steampowered.com/api/appdetails?appids=" + appId;
+    //     response = await fetch(url);
+    //     app = await response.json();
+    // }
+    // console.log(app);
+
+    let url = 'https://api.quotable.io/random';
+    let response = await fetch(url);
+    let quoteData = await response.json();
+    let quote = document.querySelector("#quote");
+    quote.innerHTML = quoteData.content;
+    let author = document.querySelector("#author");
+    author.innerHTML = quoteData.author;
+    console.log(quoteData.content);
+
+}
+
 function eraseList(element){
     while(element.firstChild){
         element.removeChild(element.firstChild);

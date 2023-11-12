@@ -58,11 +58,12 @@
             <span>Name</span>
         </div> -->
     </head>
-    <body onload="fillYearData();fillName()">
+    <body onload="fillYearData();fillName();getRandomQuote()">
         <main>
             <h1>History</h1>
             <div style="text-align:center;">
-                <span>3rd Party quote about history</span>
+                <span id="quote"></span>
+                <i id="author"></i>
             </div>
             <nav class="navbar bg-light">
                 <label for="year">Year:</label>
