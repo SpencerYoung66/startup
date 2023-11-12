@@ -51,7 +51,7 @@ async function login(){
         console.log(loggedin);
         localStorage.setItem("firstname", firstname.value);
         localStorage.setItem("lastname", lastname.value)
-        // window.location.href = "index.html";
+        window.location.href = "index.html";
     }
     else{
         alert("Please enter a first and last name");
