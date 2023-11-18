@@ -5,7 +5,7 @@ async function main() {
   // Connect to the database cluster
   const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
   const client = new MongoClient(url);
-  const db = client.db('rental');
+  const db = client.db('LaborDay');
   const flavorCollection = db.collection('flavors');
   const voteCollection = db.collection('votes');
 
