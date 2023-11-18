@@ -202,15 +202,7 @@ async function fillYearData(){
     let currentYearList = [];
     flavorList = document.querySelector("#flavors");
     eraseList(flavorList);
-    if(currentYear.value == "2023"){
-        historyResponse = await fetch("/api/flavors/2023");
-    }
-    else if(currentYear.value == "2022"){
-        historyResponse = await fetch("/api/flavors/2022");
-    }
-    else{
-        historyResponse = await fetch("/api/flavors/2021");
-    }   
+    historyResponse = await fetch("/api/flavors/" + currentYear.value);   
     currentYearList = await historyResponse.json();
     for(flavor of currentYearList){
         let currentListFlavor = document.createElement("li");
