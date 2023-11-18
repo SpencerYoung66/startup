@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 // Router for service endpoints
-const apiRouter = express.Router();
+var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // CreateAuth token for a new user
@@ -50,25 +50,39 @@ apiRouter.post('/auth/login', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
+// secureApiRouter verifies credentials for endpoints
+var secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
+secureApiRouter.use(async (req, res, next) => {
+  authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
+
 // GetScores
-apiRouter.get('/flavors/', (req, res) => {
+secureApiRouter.get('/flavors/', (req, res) => {
     res.send(userFlavors);
 });
 
 // GetScores
-apiRouter.get('/flavors/:Year/:User', async (req, res) => {
+secureApiRouter.get('/flavors/:Year/:User', async (req, res) => {
   const result = await DB.getFlavors(req.params.Year, decodeURI(req.params.User));
   res.send(result);
   // res.send(userFlavors.filter(flavor => (flavor.owner == decodeURI(req.params.User) && flavor.owner == req.params.Year)));
 });
 
-apiRouter.get('/flavors/:Year', async (req, res) => {
+secureApiRouter.get('/flavors/:Year', async (req, res) => {
     const result = await DB.getFlavors(req.params.Year);
     res.send(result);
     // res.send(userFlavors.filter(flavor => flavor.year == req.params.Year));
   });
 
-apiRouter.post('/flavors', (req, res) => {
+secureApiRouter.post('/flavors', (req, res) => {
     // addFlavor(req.body);
     const result = DB.insertFlavor(req.body);
     res.send(result);
@@ -83,16 +97,16 @@ apiRouter.post('/flavors', (req, res) => {
 //   });
 
 // SubmitScore
-apiRouter.post('/vote', (req, res) => {
+secureApiRouter.post('/vote', (req, res) => {
   // addVote(req.body);
   const result = DB.insertVote(req.body);
   res.send(result);
 });
 
-apiRouter.post('/login', (req, res) => {
-    ldLogin(req.body);
-    // res.send(userFlavors.filter(flavor => flavor.owner == req.body.owner));
-})
+// apiRouter.post('/login', (req, res) => {
+//     ldLogin(req.body);
+//     // res.send(userFlavors.filter(flavor => flavor.owner == req.body.owner));
+// })
 
 // Return the application's default page if the path is unknown
 app.use((req, res) => {
@@ -121,20 +135,20 @@ app.listen(port, () => {
 //                    {"flavor": "Cherry", "category": "fruit", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"}];
 // let votes = [];
 
-let users = [];
+// let users = [];
 
 
 // function addFlavor(newFlavor){
     // userFlavors.push(newFlavor);
 // }
 
-function addVote(newVote){
-    votes = votes.filter(myVote => myVote.user != newVote.user);
-    votes.push(newVote);
-}
+// function addVote(newVote){
+//     votes = votes.filter(myVote => myVote.user != newVote.user);
+//     votes.push(newVote);
+// }
 
-function ldLogin(newUser){
-    if((users.filter(user => (user.firstname == newUser.firstname && user.lastname == newUser.lastname)).length == 0)){
-        users.push(newUser);
-    }
-}
+// function ldLogin(newUser){
+//     if((users.filter(user => (user.firstname == newUser.firstname && user.lastname == newUser.lastname)).length == 0)){
+//         users.push(newUser);
+//     }
+// }

@@ -59,6 +59,10 @@ async function main() {
     return userCollection.findOne({firstname: req_firstname, lastname:req_lastname});
   }
 
+  function getUserByToken(token) {
+    return userCollection.findOne({ token: token });
+  }
+
   async function createUser(req_firstname, req_lastname, password) {
     const passwordHash = await bcrypt.hash(password, 10);
     const user = {
@@ -106,7 +110,7 @@ async function main() {
   // const cursor = collection.find(query, options);
   // const rentals = await cursor.toArray();
   // rentals.forEach((i) => console.log(i));
-  module.exports = { insertFlavor, insertVote, getFlavors, getUser, createUser };
+  module.exports = { insertFlavor, insertVote, getFlavors, getUser, getUserByToken, createUser };
 }
 
 main().catch(console.error);
