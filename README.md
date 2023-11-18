@@ -82,3 +82,8 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 - Frontend Third Party: Calls Quotable.io on history.html
 - Backend Endpoints: /login post request endpoint temporarily stores users, /flavors/year gets you the flavors for that year, /flavors/year/user gets you the user's flavors for that year, /flavors is a post request to add a flavor and store it temporarily in memory, and /vote is a post request to place a vote and store it temporarily in memory. Right now just an array in index.js that I update with the posted information, then display it with the GET endpoints.
 - Frontend Calls: login.html calls the login endpoint, register.html calls the user flavors for the year and the add flavor endpoints, vote.html calls the vote endpoint and the all flavors for year endpoint, and history.html calls the flavors for a given year endpoint.
+
+## Database Deliverable
+- MongoDB Atlas database creation: Done
+- Endpoints for data: Endpoints previously using fake data now record the data and store it in the database. These endpoints include storing flavors, votes, and getting out flavors.
+- Stores data in MongoDB: Done
