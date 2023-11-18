@@ -68,14 +68,14 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-let userFlavors = [{"flavor": "Chocolate", "category": "chocolate", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"}, 
-                   {"flavor": "Birthday Cake", "category": "other", "owner": "Nathan Young", "year": 2022, "winner": "Other"},
-                   {"flavor": "Strawberry", "category": "fruit", "owner": "Grandpa", "year":2021, "winner": "Fruit"},
-                   {"flavor": "Cookie Dough", "category": "other", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"},
-                   {"flavor": "Strawberry", "category": "fruit", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"},
-                   {"flavor": "Double Chocolate", "category": "chocolate", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"},
-                   {"flavor": "Cherry", "category": "fruit", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"}];
-let votes = [];
+// let userFlavors = [{"flavor": "Chocolate", "category": "chocolate", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"}, 
+//                    {"flavor": "Birthday Cake", "category": "other", "owner": "Nathan Young", "year": 2022, "winner": "Other"},
+//                    {"flavor": "Strawberry", "category": "fruit", "owner": "Grandpa", "year":2021, "winner": "Fruit"},
+//                    {"flavor": "Cookie Dough", "category": "other", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"},
+//                    {"flavor": "Strawberry", "category": "fruit", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"},
+//                    {"flavor": "Double Chocolate", "category": "chocolate", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"},
+//                    {"flavor": "Cherry", "category": "fruit", "owner": "Brad Young", "year": 2023, "winner": "Grand Prize"}];
+// let votes = [];
 
 let users = [];
 

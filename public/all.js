@@ -3,34 +3,6 @@ const categories = ["chocolate", "fruit", "other"];
 localStorage.setItem("numFlavors", Number(0));
 localStorage.setItem("numVotes", Number(0));
 
-let year_2023 = [
-    { name: "Double Chocolate", category: "chocolate", owner: "Nathan Young" },
-    { name: "Strawberry", category: "fruit", owner: "Grandpa" },
-    { name: "Cherry Chocolate Chip", category: "other", owner: "Brad Young" },
-    { name: "Cookie Dough", category: "other", owner: "Brad Young" },
-]
-
-let year_2022 = [
-    { name: "Triple Chocolate", category: "chocolate", owner: "Nathan Young" },
-    { name: "Cherry", category: "fruit", owner: "Grandpa" },
-    { name: "Cookie Two-Step", category: "other", owner: "Brad Young" },
-    { name: "Cookie Dough", category: "other", owner: "Brad Young" },
-]
-
-let year_2021 = [
-    { name: "Chocolate", category: "chocolate", owner: "Nathan Young" },
-    { name: "Orange", category: "fruit", owner: "Grandpa" },
-    { name: "I'm done coming up with flavors", category: "other", owner: "Brad Young" },
-    { name: "Cookie Dough", category: "other", owner: "Brad Young" },
-]
-
-let flavors = [
-    { name: "Double Chocolate", category: "chocolate", owner: "Nathan Young" },
-    { name: "Strawberry", category: "fruit", owner: "Grandpa" },
-    { name: "Cherry Chocolate Chip", category: "other", owner: "Brad Young" },
-    { name: "Cookie Dough", category: "other", owner: "Brad Young" },
-]
-
 function fillName(){
     if(localStorage.getItem("firstname")){
         document.querySelector("#loginLink").innerText = "Login (" + (localStorage.getItem("firstname")) + ")";
