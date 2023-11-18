@@ -29,8 +29,10 @@ async function login(type){
         });
         let loggedin = await response.json();
         console.log(loggedin);
-        localStorage.setItem("firstname", firstname.value);
-        localStorage.setItem("lastname", lastname.value)
+        if(loggedin.msg != "Unauthorized"){
+            localStorage.setItem("firstname", firstname.value);
+            localStorage.setItem("lastname", lastname.value);
+        }
         // window.location.href = "index.html";
     }
     else{
