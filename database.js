@@ -1,4 +1,7 @@
 const { MongoClient } = require('mongodb');
+const uuid = require('uuid');
+const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
 const config = require('./dbConfig.json');
 
 async function main() {
@@ -8,6 +11,7 @@ async function main() {
   const db = client.db('LaborDay');
   const flavorCollection = db.collection('flavors');
   const voteCollection = db.collection('votes');
+  const userCollection = db.collection('users');
 
   // Test that you can connect to the database
   (async function testConnection() {
@@ -51,6 +55,23 @@ async function main() {
     return cursor.toArray();
   }
 
+  function getUser(req_firstname, req_lastname){
+    return userCollection.findOne({firstname: req_firstname, lastname:req_lastname});
+  }
+
+  async function createUser(req_firstname, req_lastname, password) {
+    const passwordHash = await bcrypt.hash(password, 10);
+    const user = {
+      firstname: req_firstname,
+      lastname: req_lastname,
+      password: passwordHash,
+      token: uuid.v4(),
+    };
+    await userCollection.insertOne(user);
+  
+    return user;
+  }
+
   // function getFlavors(req_year) {
   //   const query = { year: parseInt(req_year)};
   //   // const options = {
@@ -85,7 +106,7 @@ async function main() {
   // const cursor = collection.find(query, options);
   // const rentals = await cursor.toArray();
   // rentals.forEach((i) => console.log(i));
-  module.exports = { insertFlavor, insertVote, getFlavors };
+  module.exports = { insertFlavor, insertVote, getFlavors, getUser, createUser };
 }
 
 main().catch(console.error);

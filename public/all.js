@@ -9,12 +9,20 @@ function fillName(){
     }
 }
 
-async function login(){
+async function login(type){
     let firstname = document.querySelector("#firstname");
     let lastname = document.querySelector("#lastname");
-    if(firstname.value.length > 0 && lastname.value.length > 0){
-        let request = {"firstname": firstname.value, "lastname": lastname.value};
-        const response = await fetch('/api/login', {
+    let password = document.querySelector("#password");
+    if(firstname.value.length > 0 && lastname.value.length > 0 && password.value.length > 0){
+        let request = {"firstname": firstname.value, "lastname": lastname.value, "password": password.value};
+        let url = "";
+        if(type=="login"){
+            url = '/api/auth/login';
+        }
+        else{
+            url = '/api/auth/register';
+        }
+        const response = await fetch(url, {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(request),
@@ -23,12 +31,13 @@ async function login(){
         console.log(loggedin);
         localStorage.setItem("firstname", firstname.value);
         localStorage.setItem("lastname", lastname.value)
-        window.location.href = "index.html";
+        // window.location.href = "index.html";
     }
     else{
-        alert("Please enter a first and last name");
+        alert("Please fill out all the info");
     }
 }
+
 
 async function fillAllFlavors(){
     await fillFlavors("chocolate");
