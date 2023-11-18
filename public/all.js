@@ -137,17 +137,23 @@ async function vote(){
     }
 }
 
-function fillUserFlavors(){
-    flavorList = document.querySelector("#flavors");
-    eraseList(flavorList);
-    if(localStorage.getItem("userFlavors")){
-        let currentFlavorsArray = JSON.parse(localStorage.getItem("userFlavors"));
+async function fillUserFlavors(){
+    if(localStorage.getItem("firstname")){
+        flavorList = document.querySelector("#flavors");
+        eraseList(flavorList);
+        let response = await fetch("/api/flavors/" + new Date().getFullYear() + "/" + localStorage.getItem("firstname") + " " + localStorage.getItem("lastname"));
+        console.log("/api/flavors/" + new Date().getFullYear() + "/" + localStorage.getItem("firstname") + " " + localStorage.getItem("lastname"));
+        let currentFlavorsArray = await response.json();
+        console.log(currentFlavorsArray);
+        // if(localStorage.getItem("userFlavors")){
+        // let currentFlavorsArray = JSON.parse(localStorage.getItem("userFlavors"));
         for(flavor of currentFlavorsArray){
             let currentListFlavor = document.createElement("li");
             currentListFlavor.setAttribute("class", "list-group-item");
             currentListFlavor.innerHTML = flavor.flavor; //+ " - " + flavor.category;
             flavorList.appendChild(currentListFlavor);
         }
+    // }
     }
 }
 
