@@ -50,6 +50,19 @@ apiRouter.post('/auth/login', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
+// GetScores
+apiRouter.get('/flavors/:Year/:User', async (req, res) => {
+  const result = await DB.getFlavors(req.params.Year, decodeURI(req.params.User));
+  res.send(result);
+  // res.send(userFlavors.filter(flavor => (flavor.owner == decodeURI(req.params.User) && flavor.owner == req.params.Year)));
+});
+
+apiRouter.get('/flavors/:Year', async (req, res) => {
+    const result = await DB.getFlavors(req.params.Year);
+    res.send(result);
+    // res.send(userFlavors.filter(flavor => flavor.year == req.params.Year));
+  });
+
 // secureApiRouter verifies credentials for endpoints
 var secureApiRouter = express.Router();
 apiRouter.use(secureApiRouter);
@@ -70,13 +83,13 @@ secureApiRouter.get('/flavors/', (req, res) => {
 });
 
 // GetScores
-secureApiRouter.get('/flavors/:Year/:User', async (req, res) => {
+apiRouter.get('/flavors/:Year/:User', async (req, res) => {
   const result = await DB.getFlavors(req.params.Year, decodeURI(req.params.User));
   res.send(result);
   // res.send(userFlavors.filter(flavor => (flavor.owner == decodeURI(req.params.User) && flavor.owner == req.params.Year)));
 });
 
-secureApiRouter.get('/flavors/:Year', async (req, res) => {
+apiRouter.get('/flavors/:Year', async (req, res) => {
     const result = await DB.getFlavors(req.params.Year);
     res.send(result);
     // res.send(userFlavors.filter(flavor => flavor.year == req.params.Year));
