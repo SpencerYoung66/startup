@@ -85,5 +85,11 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 
 ## Database Deliverable
 - MongoDB Atlas database creation: Done
-- Endpoints for data: Endpoints previously using fake data now record the data and store it in the database. These endpoints include storing flavors, votes, and getting out flavors.
+- Endpoints for data: Endpoints previously using fake data now record the actual data and store it in the database. These endpoints include storing flavors, votes, and getting out flavors.
 - Stores data in MongoDB: Done
+
+## Login Deliverable
+- New User: I have a registration button for new users that adds them to the database.
+- Existing User: Login button that checks for the user in the database. That user can vote and register new flavors. 
+- Credentials: These are in MongoDB (token, hashed password, etc.). Compares hashed password to the hashed entered password to verify correct credentials. Sets cookie for token.
+- Restricts Application Functionality: Secure API routes prevent users without credentials to post information. I left the flavor list unsecure so anyone can see the list, but only authenticated users can vote and add flavors. There are also alerts and redirects if the user does not have a name in local storage or if they try to vote or register a flavor without a valid auth token.
