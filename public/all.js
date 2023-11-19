@@ -29,13 +29,16 @@ async function login(type){
         });
         let loggedin = await response.json();
         console.log(loggedin);
-        if(loggedin.msg != "Unauthorized"){
+        if(loggedin.msg == "Unauthorized"){
+            alert("Name or Password not correct, please try again");
+        }
+        else if(loggedin.msg == "Existing user"){
+            alert("User already exists");
+        }
+        else{
             localStorage.setItem("firstname", firstname.value);
             localStorage.setItem("lastname", lastname.value);
             window.location.href = "vote.html";
-        }
-        else{
-            alert("Name or Password not correct, please try again");
         }
     }
     else{
