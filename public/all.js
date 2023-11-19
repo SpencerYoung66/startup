@@ -32,8 +32,11 @@ async function login(type){
         if(loggedin.msg != "Unauthorized"){
             localStorage.setItem("firstname", firstname.value);
             localStorage.setItem("lastname", lastname.value);
+            window.location.href = "vote.html";
         }
-        // window.location.href = "index.html";
+        else{
+            alert("Name or Password not correct, please try again");
+        }
     }
     else{
         alert("Please fill out all the info");
@@ -100,6 +103,10 @@ async function vote(){
         let vote = await response.json();
 
         console.log(JSON.stringify(vote));
+        if(vote.msg == "Unauthorized"){
+            alert("You are not logged in, please log in");
+            window.location.href = "login.html";
+        }
         localStorage.setItem("userVote", JSON.stringify(vote));
 
         // localStorage.setItem("chocolate", chocolate.value);
@@ -164,6 +171,10 @@ async function addUserFlavor(){
         let flavorsUpdated = await response.json();
 
         console.log(JSON.stringify(flavorsUpdated));
+        if(flavorsUpdated.msg == "Unauthorized"){
+            alert("You are not logged in, please log in");
+            window.location.href = "login.html";
+        }
         localStorage.setItem("userFlavors", JSON.stringify(flavorsUpdated));
 
         fillUserFlavors();
