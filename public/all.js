@@ -153,6 +153,7 @@ async function vote(){
 async function fillUserFlavors(){
     if(localStorage.getItem("firstname")){
         flavorList = document.querySelector("#flavors");
+        oldList = flavorList.innerHTML;
         eraseList(flavorList);
         let response = await fetch("/api/flavors/" + new Date().getFullYear() + "/" + localStorage.getItem("firstname") + " " + localStorage.getItem("lastname"));
         console.log("/api/flavors/" + new Date().getFullYear() + "/" + localStorage.getItem("firstname") + " " + localStorage.getItem("lastname"));
@@ -165,6 +166,9 @@ async function fillUserFlavors(){
             currentListFlavor.setAttribute("class", "list-group-item");
             currentListFlavor.innerHTML = flavor.flavor; //+ " - " + flavor.category;
             flavorList.appendChild(currentListFlavor);
+        }
+        if(flavorList.innerHTML != oldList){
+            socket.send('flavor');
         }
     // }
     }
@@ -193,16 +197,17 @@ async function addUserFlavor(){
 
         let flavorsUpdated = await response.json();
 
+        console.log(flavorsUpdated);
+
         console.log(JSON.stringify(flavorsUpdated));
         if(flavorsUpdated.msg == "Unauthorized"){
             alert("You are not logged in, please log in");
             window.location.href = "login.html";
         }
-        localStorage.setItem("userFlavors", JSON.stringify(flavorsUpdated));
+        // localStorage.setItem("userFlavors", JSON.stringify(flavorsUpdated));
 
         fillUserFlavors();
 
-        socket.send('flavor');
 
 
         // //WebSocket
