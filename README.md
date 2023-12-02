@@ -93,3 +93,10 @@ Every year at our family Labor Day homemade ice cream contest, we fill out paper
 - Existing User: Login button that checks for the user in the database. That user can vote and register new flavors. 
 - Credentials: These are in MongoDB (token, hashed password, etc.). Compares hashed password to the hashed entered password to verify correct credentials. Sets cookie for token.
 - Restricts Application Functionality: Secure API routes prevent users without credentials to post information. I left the flavor list unsecure so anyone can see the list, but only authenticated users can vote and add flavors. There are also alerts and redirects if the user does not have a name in local storage or if they try to vote or register a flavor without a valid auth token.
+
+## WebSocket Deliverable
+When user adds new ice cream flavor, updates flavor count for all users
+- Backend Listens: Done, listens for flavor message from other users to update flavor
+- Frontend Listens: Done, sends message that says "flavor" to other users to notify them to update the flavor count
+- Data sent over WebSocket: Sends the word "flavor", just because I didn't really need to send user specific information
+- WebSocket data displayed: Updates a flavor counter on the user screen for all users when any user enters a new flavor
