@@ -1,7 +1,29 @@
 const categories = ["chocolate", "fruit", "other"];
+const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
 
-localStorage.setItem("numFlavors", Number(0));
-localStorage.setItem("numVotes", Number(0));
+// // Display that we have opened the webSocket
+socket.onopen = (event) => {
+    console.log("WebSocket Connected");
+  };
+  
+  // Display messages we receive from our friends
+socket.onmessage = async (event) => {
+    const text = await event.data.text();
+    // const message = JSON.parse(text);
+    console.log(text);
+
+    if(text === "flavor"){
+        increaseFlavors();
+    }
+    else{
+        increaseVotes();
+    }
+    // appendMsg('friend', chat.name, chat.msg);
+};
+
+// localStorage.setItem("numFlavors", Number(0));
+// localStorage.setItem("numVotes", Number(0));
 
 function fillName(){
     if(localStorage.getItem("firstname")){
@@ -239,18 +261,30 @@ function eraseList(element){
     }
 }
 
-setInterval(() => {
-    if(document.querySelector('#numFlavors')){
-        let numFlavors = document.querySelector('#numFlavors');
-        localStorage.setItem("numFlavors", Number(localStorage.getItem("numFlavors")) + 1);
-        numFlavors.innerHTML = "Number of Flavors: " + Number(localStorage.getItem("numFlavors"));
-    }
-  }, 4000);
+function increaseFlavors(){
+    let numFlavors = document.querySelector('#numFlavors');
+    numberOfFlavorsArray = (numFlavors.innerHTML).split(" ");
+    numFlavors.innerHTML = "Number of Flavors: " + (Number(numberOfFlavorsArray[3]) + 1);
+}
 
-  setInterval(() => {
-    if(document.querySelector('#numVotes')){
-        let numVotes = document.querySelector('#numVotes');
-        localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
-        numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
-    }
-  }, 1000);
+function increaseVotes(){
+    let numVotes = document.querySelector('#numVotes');
+    numberOfVotesArray = (numVotes.innerHTML).split(" ");
+    numVotes.innerHTML = "Number of Votes: " + (Number(numberOfVotesArray[3]) + 1);
+}
+
+// setInterval(() => {
+//     if(document.querySelector('#numFlavors')){
+//         let numFlavors = document.querySelector('#numFlavors');
+//         localStorage.setItem("numFlavors", Number(localStorage.getItem("numFlavors")) + 1);
+//         numFlavors.innerHTML = "Number of Flavors: " + Number(localStorage.getItem("numFlavors"));
+//     }
+//   }, 4000);
+
+// setInterval(() => {
+//     if(document.querySelector('#numVotes')){
+//         let numVotes = document.querySelector('#numVotes');
+//         localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
+//         numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
+//     }
+//   }, 1000);
