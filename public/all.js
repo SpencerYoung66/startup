@@ -16,9 +16,6 @@ socket.onmessage = async (event) => {
     if(text === "flavor"){
         increaseFlavors();
     }
-    else{
-        increaseVotes();
-    }
     // appendMsg('friend', chat.name, chat.msg);
 };
 
@@ -140,9 +137,10 @@ async function vote(){
         // localStorage.setItem("grandPrize", grandPrize.value);
 
         //WebSocket
-        let numVotes = document.querySelector('#numVotes');
-        localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
-        numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
+        // let numVotes = document.querySelector('#numVotes');
+        // localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
+        // numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
+        // socket.send('vote');
 
         window.location.href = "index.html";
     }
@@ -204,11 +202,13 @@ async function addUserFlavor(){
 
         fillUserFlavors();
 
+        socket.send('flavor');
 
-        //WebSocket
-        let numFlavors = document.querySelector('#numFlavors');
-        localStorage.setItem("numFlavors", Number(localStorage.getItem("numFlavors")) + 1);
-        numFlavors.innerHTML = "Number of Flavors: " + Number(localStorage.getItem("numFlavors"));
+
+        // //WebSocket
+        // let numFlavors = document.querySelector('#numFlavors');
+        // localStorage.setItem("numFlavors", Number(localStorage.getItem("numFlavors")) + 1);
+        // numFlavors.innerHTML = "Number of Flavors: " + Number(localStorage.getItem("numFlavors"));
     }
     else{
         alert("Please Log in");
@@ -261,17 +261,27 @@ function eraseList(element){
     }
 }
 
+async function fillFlavorNumber(){
+    flavorsResponse = await fetch("/api/flavors/2023");
+    allFlavors = await flavorsResponse.json();
+    document.querySelector('#numFlavors').innerHTML = "Number of Flavors: " + Number(allFlavors.length);
+}
+
+// function fillVoteNumber(){
+
+// }
+
 function increaseFlavors(){
     let numFlavors = document.querySelector('#numFlavors');
     numberOfFlavorsArray = (numFlavors.innerHTML).split(" ");
     numFlavors.innerHTML = "Number of Flavors: " + (Number(numberOfFlavorsArray[3]) + 1);
 }
 
-function increaseVotes(){
-    let numVotes = document.querySelector('#numVotes');
-    numberOfVotesArray = (numVotes.innerHTML).split(" ");
-    numVotes.innerHTML = "Number of Votes: " + (Number(numberOfVotesArray[3]) + 1);
-}
+// function increaseVotes(){
+//     let numVotes = document.querySelector('#numVotes');
+//     numberOfVotesArray = (numVotes.innerHTML).split(" ");
+//     numVotes.innerHTML = "Number of Votes: " + (Number(numberOfVotesArray[3]) + 1);
+// }
 
 // setInterval(() => {
 //     if(document.querySelector('#numFlavors')){
