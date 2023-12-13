@@ -5,18 +5,18 @@ export function History() {
   const [author, setAuthor] = React.useState([]);
   const [year, setYear] = React.useState([new Date().getFullYear()]);
   const [flavors, setFlavors] = React.useState([]);
-//   React.useEffect(() => {
-//     let url = 'https://api.quotable.io/random';
-//     fetch(url)
-//     .then((response) => response.json())
-//     .then((quoteData) => {
-//         setQuote(quoteData.content);
-//         setAuthor(quoteData.author);
-//     });    
-//     // let quoteData = await response.json();
-//     // setQuote(quoteData.content);
-//     // setAuthor(quoteData.author);
-//   }, []);
+  React.useEffect(() => {
+    let url = 'https://api.quotable.io/random';
+    fetch(url)
+    .then((response) => response.json())
+    .then((quoteData) => {
+        setQuote(quoteData.content);
+        setAuthor(quoteData.author);
+    });    
+    // let quoteData = await response.json();
+    // setQuote(quoteData.content);
+    // setAuthor(quoteData.author);
+  }, []);
 
   const onChange = (e) => {
     setYear(e.target.value);
