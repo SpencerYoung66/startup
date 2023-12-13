@@ -43,8 +43,9 @@ export function Login() {
                 alert("User already exists");
             }
             else{
-                localStorage.setItem("firstname", firstname.value);
-                localStorage.setItem("lastname", lastname.value);
+                alert("Login Succeeded");
+                localStorage.setItem("firstname", firstname);
+                localStorage.setItem("lastname", lastname);
                 // window.location.href = "vote.html";
             }
         }

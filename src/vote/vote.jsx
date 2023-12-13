@@ -1,19 +1,63 @@
 import React from 'react';
 
+import { Button } from 'react-bootstrap';
+
 export function Vote() {
     const [chocolate, setChocolate] = React.useState([]);
     const [fruit, setFruit] = React.useState([]);
     const [other, setOther] = React.useState([]);
     const [grand, setGrand] = React.useState([]);
     const [grandElemsState, setGrandElemsState] = React.useState([]);
+    const [grandVote, setGrandVote] = React.useState([]);
     const [flavors, setFlavors] = React.useState([]);
+
+    async function vote(){
+        if(localStorage.getItem("firstname")){
+            console.log(grand);
+            let chocolateVote = grand.filter(i => i.category === "chocolate")[0];
+            let fruitVote = grand.filter(i => i.category === "fruit")[0];
+            let otherVote = grand.filter(i => i.category === "other")[0];
+            const voteRequest = {"user": localStorage.getItem("firstname") + " " + localStorage.getItem("lastname"), "chocolate": chocolateVote.flavor, "fruit": fruitVote.flavor, "other": otherVote.flavor, "grandPrize":grandVote.flavor};
+            const response = await fetch('/api/vote', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify(voteRequest),
+            });
+    
+            let vote = await response.json();
+    
+            console.log(JSON.stringify(vote));
+            if(vote.msg == "Unauthorized"){
+                alert("You are not logged in, please log in");
+                // window.location.href = "login.html";
+            }
+            alert("Vote Successful");
+            localStorage.setItem("userVote", JSON.stringify(vote));
+    
+            // window.location.href = "index.html";
+        }
+        else{
+            alert("Please Log in");
+            // window.location.href = "login.html";
+        }
+    }
+
+
 
     const onChange = (e) => {
         console.log("on change");
-        let tmpGrand = grand.filter(i => i.category !== e.target.id);
-        console.log(tmpGrand);
-        console.log(flavors.filter(i => i.flavor === e.target.value));
-        // setGrand(grand.filter(i => i.category !== e.target.id));
+        if(e.target.id === "grand"){
+            setGrandVote(flavors.filter(i => i.flavor === e.target.value)[0]);
+        }
+        else{
+            let tmpGrand = grand.filter(i => i.category !== e.target.id);
+            console.log(tmpGrand);
+            // if()
+            tmpGrand.push(flavors.filter(i => i.flavor === e.target.value)[0]);
+            setGrand(tmpGrand);
+        }
+
+
         // console.log(chocolate?.[0]);
         // const grandElems= [];
         // if(grand.length){
@@ -41,6 +85,7 @@ export function Vote() {
             const tempOther = yearFlavors.filter( i => i.category === "other");
             setOther(yearFlavors.filter( i => i.category === "other"));
             setGrand([tempChocolate?.[0], tempFruit?.[0], tempOther?.[0]]);
+            setGrandVote(tempChocolate?.[0]);
 
             const grandElems= [];
             console.log(grand);
@@ -144,6 +189,9 @@ export function Vote() {
                     {grandElemsState}
                 </select>
             </div>
+            <Button variant='primary' onClick={() => vote()}>
+            Vote
+            </Button>
             {/* <button className="btn btn-outline-success me-2" type="button" onclick="vote()">Vote</button> */}
         </form>
     </nav>

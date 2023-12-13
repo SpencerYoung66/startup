@@ -131,17 +131,6 @@ async function vote(){
         }
         localStorage.setItem("userVote", JSON.stringify(vote));
 
-        // localStorage.setItem("chocolate", chocolate.value);
-        // localStorage.setItem("fruit", fruit.value);
-        // localStorage.setItem("other", other.value);
-        // localStorage.setItem("grandPrize", grandPrize.value);
-
-        //WebSocket
-        // let numVotes = document.querySelector('#numVotes');
-        // localStorage.setItem("numVotes", Number(localStorage.getItem("numVotes")) + 1);
-        // numVotes.innerHTML = "Number of Votes: " + Number(localStorage.getItem("numVotes"));
-        // socket.send('vote');
-
         window.location.href = "index.html";
     }
     else{
