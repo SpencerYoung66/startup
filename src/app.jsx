@@ -7,6 +7,7 @@ import { History } from './history/history';
 import { Register } from './register/register';
 import { Vote } from './vote/vote';
 import { Home } from './home/home';
+import { Button } from 'react-bootstrap';
 
 export default function App() {
   return (
@@ -16,11 +17,15 @@ export default function App() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
     <NavLink className="navbar-brand" to="home">Labor Day Ice Cream</NavLink>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    {/* <NavBar collapseOnSelect fixed='top' expand='sm' bg='dark' variant='dark'>
+        <Container>
+            <NavBar.Toggle aria-controls='responsive-navbar-nav'/>
+            <NavBar.Collapse> */}
+    {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
-    </button>
+    </button> */}
   
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link active" to="home">Home</NavLink>
@@ -38,7 +43,10 @@ export default function App() {
             <NavLink className="nav-link" to="history">History</NavLink>
         </li>  
       </ul>
-    </div>
+    {/* </div> */}
+    {/* </NavBar.Collapse>
+    </Container>
+    </NavBar> */}
     </div>
   </nav>
 </header>
