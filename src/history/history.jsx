@@ -53,6 +53,7 @@ export function History() {
 
 
   return (
+
     <main>
     <h1>History</h1>
     <div>
@@ -75,5 +76,6 @@ export function History() {
           </ul>
     </div>
 </main>
+
   );
 }

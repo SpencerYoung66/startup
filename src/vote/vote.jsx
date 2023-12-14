@@ -160,6 +160,7 @@ export function Vote() {
 
 
   return (
+    <body>
     <main>
     <h1>Vote for your Favorite Flavors!</h1>
     <span>Vote for your favorite flavor in each category. The Grand Prize must be one of the flavors you voted for in your category favorites.</span>
@@ -196,5 +197,6 @@ export function Vote() {
         </form>
     </nav>
 </main>
+</body>
   );
 }

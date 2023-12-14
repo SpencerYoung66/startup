@@ -169,14 +169,6 @@ async function addUserFlavor(){
         let newCategory = document.querySelector("#category").value;
         flavorRequest = {"flavor": newFlavor, "category": newCategory, "owner": localStorage.getItem("firstname") + " " + localStorage.getItem("lastname"), "year": new Date().getFullYear()}
         console.log(JSON.stringify(flavorRequest))
-        // let currentFlavorsArray = [];
-        // if(localStorage.getItem("userFlavors")){
-        //     currentFlavorsArray = JSON.parse(localStorage.getItem("userFlavors"));
-        // }
-        // currentFlavorsArray.push({name:newFlavor, category:newCategory});
-
-        // localStorage.setItem("userFlavors", JSON.stringify(currentFlavorsArray));
-        // flavors.push({name:newFlavor, category:newCategory, owner:localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")});
 
         const response = await fetch('/api/flavors', {
             method: 'POST',
@@ -193,20 +185,11 @@ async function addUserFlavor(){
             alert("You are not logged in, please log in");
             window.location.href = "login.html";
         }
-        // localStorage.setItem("userFlavors", JSON.stringify(flavorsUpdated));
 
         fillUserFlavors();
-
-
-
-        // //WebSocket
-        // let numFlavors = document.querySelector('#numFlavors');
-        // localStorage.setItem("numFlavors", Number(localStorage.getItem("numFlavors")) + 1);
-        // numFlavors.innerHTML = "Number of Flavors: " + Number(localStorage.getItem("numFlavors"));
     }
     else{
         alert("Please Log in");
-        window.location.href = "login.html";
     }
 }
 

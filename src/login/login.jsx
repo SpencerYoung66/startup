@@ -56,6 +56,7 @@ export function Login() {
 
 
   return (
+    <body>
     <main>
     <h1>Login Here:</h1>
     <div>
@@ -85,5 +86,6 @@ export function Login() {
         </nav>
     </div>
 </main>
+</body>
   );
 }
