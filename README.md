@@ -100,3 +100,13 @@ When user adds new ice cream flavor, updates flavor count for all users
 - Frontend Listens: Done, sends message that says "flavor" to other users to notify them to update the flavor count
 - Data sent over WebSocket: Sends the word "flavor", just because I didn't really need to send user specific information
 - WebSocket data displayed: Updates a flavor counter on the user screen for all users when any user enters a new flavor
+
+## React Deliverable
+Converted all major parts to React
+
+Bundled and Transpiled - Done with deployReact.sh (I believe)
+Components - Home, History, Login, Register, and Vote are all React components
+Router - Router to move from component to component, including Home, History, Login, Register, and Vote
+Hooks - useState for various states throughout the components (storing flavors, names, votes, etc.). useEffect to call apis and change states based on other state changes.
+
+I converted everything to React, however I lost some functionality along the way. Namely, I lost some CSS, the WebSocket portion, and the opening image. However, the core functions of logging in, registering flavors, voting, and seeing the history of flavors are all there and working.
